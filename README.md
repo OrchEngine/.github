@@ -17,6 +17,20 @@ defaults; this is not a normal repository's `.github/ISSUE_TEMPLATE` path. Each 
 the matching issue type automatically, and blank issues are disabled. CLI and API callers
 bypass the forms, so they must pass the type explicitly.
 
+## How org-wide defaults work
+
+This repository is a fallback, not a copy step. Nothing is added to the other repositories.
+
+1. If a repository has its own `.github/ISSUE_TEMPLATE` templates or config, those files
+   win and this repository is ignored for that repository.
+2. Otherwise, GitHub reads the templates from this repository.
+3. New repositories get the defaults automatically as long as they do not define their own
+   templates.
+
+To override the defaults in one repository, add a local `.github/ISSUE_TEMPLATE` folder.
+Because a local folder replaces the whole default set, include every form that repository
+needs, not just the one being changed.
+
 ## Labels
 
 Issue types own "kind". Labels own area (`runtime`, `editor`, `storage`, `build`,
